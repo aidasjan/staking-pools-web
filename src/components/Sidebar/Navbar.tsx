@@ -16,7 +16,7 @@ const Navbar = ({ onOpen }: Props) => {
         px={{ base: 4, md: 24 }}
         height={16}
         alignItems="center"
-        bg="gray.700"
+        bg="purple.700"
         justifyContent="flex-end"
       >
         <ConnectButton />

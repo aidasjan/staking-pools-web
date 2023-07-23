@@ -13,7 +13,7 @@ const SidebarContent = ({ onClose }: SidebarProps) => {
   return (
     <Box
       w={{ base: 'full', md: 64 }}
-      bg="gray.700"
+      bg="purple.700"
       pos="fixed"
       h="full"
       shadow="lg"
