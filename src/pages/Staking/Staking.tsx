@@ -28,13 +28,17 @@ const Staking = () => {
             selectedPoolAddress={selectedPoolAddress}
             onPoolSelected={setSelectedPoolAddress}
           />
-          {selectedPoolAddress && tokenAddress && (
+          {selectedPoolAddress && tokenAddress ? (
             <Pool
               pool={pools.find((pool) => pool.address === selectedPoolAddress)}
               tokenAddress={tokenAddress}
               onTokensStake={stakeTokens}
               onTokensUnstake={unstakeTokens}
             />
+          ) : (
+            <Box textAlign="center" fontSize="3xl" opacity={0.5} my={24}>
+              Select a pool to stake
+            </Box>
           )}
         </SimpleGrid>
       )}

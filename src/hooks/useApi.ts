@@ -33,10 +33,10 @@ export const useApi = () => {
 
       return response.data
     } catch (error: any) {
-      if (error.response && error.response.status === 400) {
+      if (error.response?.status.toString().startsWith('4')) {
         const errorResult = error.response.data
-        toast({ status: 'error', title: errorResult.error })
-      } else if (error.response && error.response.status === 500) {
+        toast({ status: 'error', title: errorResult.message })
+      } else if (error.response.toString().startsWith('5')) {
         toast({
           status: 'error',
           title: 'Something went wrong. Please try again later.'
@@ -49,14 +49,21 @@ export const useApi = () => {
 
   const getChallenge = async (address: string) => {
     await sendRequest('/sanctum/csrf-cookie', 'GET')
-    return await sendRequest('/api/challenge', 'POST', { address })
+    return await sendRequest('/api/auth/challenge', 'POST', { address })
   }
 
   const loginUser = async (address: string, signature: string) =>
-    await sendRequest('/api/login', 'POST', { address, signature })
+    await sendRequest('/api/auth/login', 'POST', { address, signature })
+
+  const getSelfUser = async () => await sendRequest('/api/users/self', 'GET')
+
+  const updateSelfUser = async (name: string, email: string) =>
+    await sendRequest('/api/users/self', 'PUT', { name, email })
 
   return {
     getChallenge,
-    loginUser
+    loginUser,
+    getSelfUser,
+    updateSelfUser
   }
 }

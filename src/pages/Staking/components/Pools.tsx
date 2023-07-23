@@ -13,7 +13,7 @@ const Pools = ({ pools, selectedPoolAddress, onPoolSelected }: Props) => {
     <Box>
       <Box bg="purple.700" borderRadius="xl" p={6}>
         <Heading size="lg" mb={4}>
-          Select Pool
+          Available Pools
         </Heading>
         {pools.map((pool) => (
           <Box

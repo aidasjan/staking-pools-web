@@ -19,8 +19,12 @@ const Navbar = ({ onOpen }: Props) => {
         bg="purple.700"
         justifyContent="flex-end"
       >
+        {user?.name && (
+          <Box fontWeight="bold" mr={3} display={{ base: 'none', md: 'block' }}>
+            {user.name}
+          </Box>
+        )}
         <ConnectButton />
-        {user && <Box ml={3}>{user.name}</Box>}
         <IconButton
           onClick={onOpen}
           ml={4}

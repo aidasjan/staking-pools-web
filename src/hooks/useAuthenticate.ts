@@ -7,6 +7,12 @@ export const useAuthenticate = () => {
   const { getChallenge, loginUser } = useApi()
   const [user, setUser] = useState<User | null>(null)
 
+  const updateUser = (userData: User) => {
+    const updatedUser = { ...user, ...userData }
+    localStorage.setItem('user', JSON.stringify(updatedUser))
+    setUser(updatedUser)
+  }
+
   const authenticate = async ({ address }: { address?: string }) => {
     if (!address) {
       return
@@ -22,8 +28,7 @@ export const useAuthenticate = () => {
         message: challengeResult.challenge
       })
       const authUser = await loginUser(address, signedChallenge)
-      localStorage.setItem('user', JSON.stringify(authUser))
-      setUser(authUser)
+      updateUser(authUser)
     } catch (e) {
       console.error(e)
     }
@@ -36,6 +41,7 @@ export const useAuthenticate = () => {
 
   return {
     user,
+    updateUser,
     authenticate,
     logout
   }

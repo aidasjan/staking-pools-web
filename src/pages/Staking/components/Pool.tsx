@@ -37,6 +37,18 @@ const Pool = ({
     return <Loader />
   }
 
+  const reward =
+    pool.accountStakeTime && pool.accountStake
+      ? ((Date.now() / 1000 - pool.accountStakeTime) / 3600) *
+        ((pool.accountStake * pool.hourlyReward) / 100)
+      : 0
+
+  const maxReward = pool.accountStake
+    ? (pool.maxStakingPeriod * pool.accountStake * pool.hourlyReward) /
+      3600 /
+      100
+    : 0
+
   const poolProperties = [
     {
       label: 'Min. staking period',
@@ -68,13 +80,9 @@ const Pool = ({
     },
     {
       label: 'Reward',
-      value:
-        pool.accountStakeTime && pool.accountStake
-          ? `${(
-              ((Date.now() / 1000 - pool.accountStakeTime) / 3600) *
-              ((pool.accountStake * pool.hourlyReward) / 100)
-            ).toFixed(2)} ${token.symbol}`
-          : null
+      value: `${
+        reward > maxReward ? maxReward.toFixed(2) : reward.toFixed(2)
+      } ${token.symbol}`
     }
   ]
 

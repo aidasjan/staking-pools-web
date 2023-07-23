@@ -5,6 +5,8 @@ import { useAuthenticate } from 'hooks/useAuthenticate'
 
 interface AuthInfo {
   user: User | null
+  authenticate: (authInfo: { address?: string }) => Promise<void>
+  updateUser: (userData: User) => void
 }
 
 interface Props {
@@ -12,7 +14,9 @@ interface Props {
 }
 
 const initialValue = {
-  user: null
+  user: null,
+  authenticate: async () => {},
+  updateUser: () => {}
 }
 
 const UserContext = createContext<AuthInfo>(initialValue)
@@ -22,11 +26,13 @@ export const useUser = () => {
 }
 
 const UserProvider = ({ children }: Props) => {
-  const { user, authenticate, logout } = useAuthenticate()
+  const { user, updateUser, authenticate, logout } = useAuthenticate()
   useAccount({ onConnect: authenticate, onDisconnect: logout })
 
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, authenticate, updateUser }}>
+      {children}
+    </UserContext.Provider>
   )
 }
 

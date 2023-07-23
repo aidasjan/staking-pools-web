@@ -8,7 +8,10 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose }: SidebarProps) => {
-  const items = [{ title: 'Staking', icon: 'fas fa-coins', to: '/' }]
+  const items = [
+    { title: 'Staking', icon: 'fas fa-coins', to: '/' },
+    { title: 'Profile', icon: 'fas fa-user', to: '/profile' }
+  ]
 
   return (
     <Box

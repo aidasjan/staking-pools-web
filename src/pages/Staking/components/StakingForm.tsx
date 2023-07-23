@@ -97,16 +97,9 @@ const StakingForm = ({
                 setStakingAmount(parseFloat(e.target.value))
               }}
             />
-            <Input
-              type="submit"
-              value="Stake"
-              bg="purple.500"
-              cursor="pointer"
-              fontWeight="bold"
-              borderWidth={0}
-              mt={3}
-              w="full"
-            />
+            <Button type="submit" mt={3} colorScheme="purple" w="full">
+              Stake
+            </Button>
           </form>
         </>
       )}
