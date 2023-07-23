@@ -185,7 +185,7 @@ export const usePools = () => {
   useEffect(() => {
     getPools()
     getTokenAddress()
-  }, [])
+  }, [account])
 
   useEffect(() => {
     if (poolAddresses) {

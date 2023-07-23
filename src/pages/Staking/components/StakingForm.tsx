@@ -77,7 +77,7 @@ const StakingForm = ({
 
   return (
     <Box>
-      {pool.accountStake === 0 && balance && (
+      {account && pool.accountStake === 0 && balance && (
         <>
           <SimpleGrid columns={{ base: 1, md: 2 }} alignItems="center">
             <Box fontSize="xl">Stake Amount</Box>
@@ -104,7 +104,10 @@ const StakingForm = ({
         </>
       )}
 
-      {pool.accountStake && pool.accountStakeTime && pool.accountStake > 0 ? (
+      {account &&
+      pool.accountStake &&
+      pool.accountStakeTime &&
+      pool.accountStake > 0 ? (
         <Button
           colorScheme="purple"
           w="full"
@@ -115,7 +118,7 @@ const StakingForm = ({
         >
           Withdraw
         </Button>
-      ) : null}
+          ) : null}
 
       {!account && (
         <Flex direction="column" align="center">

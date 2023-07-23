@@ -23,24 +23,28 @@ const SidebarContent = ({ onClose }: SidebarProps) => {
       h="full"
       shadow="lg"
     >
-      <Flex h={20} alignItems="center" justifyContent="space-between" mx={5} mb={6}>
+      <Flex
+        h={20}
+        alignItems="center"
+        justifyContent="space-between"
+        mx={5}
+        mb={6}
+      >
         <Text fontSize="md" fontWeight="bold">
           Staking Pools
         </Text>
         <CloseButton onClick={onClose} display={{ base: 'flex', md: 'none' }} />
       </Flex>
       {items.map((item) => (
-        <>
-          <NavItem
-            key={item.to}
-            target={item.to}
-            icon={item.icon}
-            isSelected={location.pathname === item.to}
-            onClick={onClose}
-          >
-            {item.title}
-          </NavItem>
-        </>
+        <NavItem
+          key={item.to}
+          target={item.to}
+          icon={item.icon}
+          isSelected={location.pathname === item.to}
+          onClick={onClose}
+        >
+          {item.title}
+        </NavItem>
       ))}
     </Box>
   )
