@@ -44,7 +44,10 @@
       "firefox >= 68",
       "opera >= 54",
       "safari >= 14",
-      "and_chr >= 67"
+      "and_chr >= 67",
+      "android >= 67",
+      "ios_saf >= 14",
+      "ChromeAndroid >= 67"
     ],
     "development": [
       "last 1 chrome version",
