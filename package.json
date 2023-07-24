@@ -43,7 +43,10 @@
       "edge >= 79",
       "firefox >= 68",
       "opera >= 54",
-      "safari >= 14"
+      "safari >= 14",
+      "ios_saf >= 14",
+      "android >= 67",
+      "chromeandroid >= 67"
     ],
     "development": [
       "last 1 chrome version",
